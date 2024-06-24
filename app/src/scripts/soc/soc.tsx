@@ -139,6 +139,11 @@ export abstract class SOC_Generic {
                     ),
                 ),
             );
+        } else if (searchBy === SearchBy.SECTION_ID) {
+            const searchId = parseInt(phrase, 10);
+            return this.courses.filter((c) =>
+                c.sections.some((s) => s.id === searchId)
+            );
         }
         throw new Error("Unhandled SearchBy.");
     }
